@@ -10,6 +10,7 @@ const state = {
   mineRemaining: 3,
   turn: 0,
   mines: [],
+  prev: 0
 };
 
 export const start = ({ radar }) => {
@@ -26,7 +27,7 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
   state.position.x = Math.floor(Math.random()*10);
   state.position.y = Math.floor(Math.random()*10);
 
-  let prev;
+ 
 
   if((state.position.x, state.position.y) === state.mines) {
     return move(state.position.x, state.position.y);
@@ -35,10 +36,10 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
     return move(state.position.x, state.position.y);
   }
   else if ((state.turn % 7) === 0) {
-    prev=state.turn;
+    state.prev=state.turn;
     return runRadar();
   } 
-  else if (prev+1===state.turn) {
+  else if (state.prev+1===state.turn) {
     return move(opponent);
   }
   else {
