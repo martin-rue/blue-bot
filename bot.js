@@ -1,6 +1,7 @@
 import { move, layMine, runRadar } from "./turns.js";
 import { readRadar } from "./radar.js";
 
+// commit test
 const state = {
   gridSize: 0,
   position: null,
