@@ -28,7 +28,7 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
 
   let prev;
 
-  if((state.position.x, state.position.y) === mines) {
+  if((state.position.x, state.position.y) === state.mines) {
     return move(state.position.x, state.position.y);
   }
   else if (opponentUsedRadar) {
