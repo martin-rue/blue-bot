@@ -23,7 +23,23 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
   state.minesRemaining = minesRemaining;
   state.opponentUsedRadar = opponentUsedRadar;
 
-  return move(state.position.x, state.position.y);
+  state.position.x = Math.floor(Math.random()*10);
+  state.position.y = Math.floor(Math.random()*10);
+
+  
+  if (opponentUsedRadar) {
+    return move(state.position.x, state.position.y);
+  }
+  else if (turn % 5 === 0) {
+    return runRadar;
+  } 
+  else if ((turn -1)=== runRadar) {
+    return move(opponent);
+  }
+  else {
+    return move(state.position.x, state.position.y);
+  }
+  
 };
 
 export const handleRadar = ({ radar }) => {
