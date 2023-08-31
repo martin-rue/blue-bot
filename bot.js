@@ -40,7 +40,7 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
     return runRadar();
   } 
   else if (state.prev+1===state.turn) {
-    return move(opponent);
+    return move(state.opponent);
   }
   else {
     return move(state.position.x, state.position.y);
