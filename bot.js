@@ -26,14 +26,19 @@ export const turn = ({ minesRemaining, opponentUsedRadar }) => {
   state.position.x = Math.floor(Math.random()*10);
   state.position.y = Math.floor(Math.random()*10);
 
-  
-  if (opponentUsedRadar) {
+  let prev;
+
+  if((state.position.x, state.position.y) === mines) {
     return move(state.position.x, state.position.y);
   }
-  else if (turn % 5 === 0) {
-    return runRadar;
+  else if (opponentUsedRadar) {
+    return move(state.position.x, state.position.y);
+  }
+  else if ((state.turn % 7) === 0) {
+    prev=state.turn;
+    return runRadar();
   } 
-  else if ((turn -1)=== runRadar) {
+  else if (prev+1===state.turn) {
     return move(opponent);
   }
   else {
